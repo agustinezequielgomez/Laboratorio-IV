@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <label>Nombre de usuario</label>
+        <input type="text" class="form-control" placeholder="Nombre de usuario" [(ngModel)]="usuario.nombre">
+        <label>Contraseña</label>
+        <input type={{type}} class="form-control" placeholder="Contraseña" [(ngModel)]="usuario.clave">
+        <div class="form-row">
+            <input type="checkbox" [(ngModel)]="showPass" (click)="showPassword()" name="check">
+            <label for="check">Mostrar contraseña</label>
+        </div>
+        <button class="btn btn-primary form-control" (click)="registrarUsuario()">Registrar</button>
+    </div>
+    <app-listado-de-usuarios [listado]=listadoDeUsuarios></app-listado-de-usuarios>
+    <app-grilla [lista]=listadoDeUsuarios></app-grilla>
+    <app-listado-posta [listado]=listadoDeUsuarios></app-listado-posta>
+</div>

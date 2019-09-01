@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class='table-bordered table-dark'>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor='let usuario of lista; let i = index;'>
+                    <th scope="row">{{i+1}}</th>
+                    <td scope="row">{{usuario.nombre}}</td>
+                    <td scope="row">{{usuario.clave}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

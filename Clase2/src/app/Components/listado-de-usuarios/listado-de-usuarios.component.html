@@ -1,0 +1,11 @@
+<div class="container-fluid">
+    <div class="card-columns">
+        <div class="card" *ngFor="let usuario of listado; let i=index">
+            <div class="card-body">
+                <h5 class="card-title">Usuario {{i+1}} </h5>
+                <p class="card-text">{{usuario.nombre}} </p>
+                <p class="card-text">{{usuario.clave}} </p>
+            </div>
+        </div>
+    </div>
+</div>
