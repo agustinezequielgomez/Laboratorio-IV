@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="card-columns">
+        <div class="card" *ngFor="let usuario of listado; let i=index">
+            <div class="card-body">
+                <h5 class="card-title">Usuario {{i+1}} </h5>
+                <p class="card-text">{{usuario.nombre}} </p>
+                <p class="card-text">{{usuario.clave}} </p>
+                <button class="btn btn-primary" (click)="editarUser(usuario)">Editar</button>
+                <button class="btn btn-danger" (click)="borarUser(usuario)">Borrar</button>
+            </div>
+        </div>
+    </div>
+</div>

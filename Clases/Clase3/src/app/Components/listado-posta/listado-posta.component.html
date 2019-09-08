@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item-primary " *ngFor='let usuario of listado; let i = index;'>Usuario {{i+1}}
+            <ul>
+                <li class="list-group-item">{{usuario.nombre}}</li>
+                <li class="list-group-item">{{usuario.clave}}</li>
+            </ul>
+        </li>
+    </ul>
+</div>
