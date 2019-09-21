@@ -1,0 +1,30 @@
+<p>Nombre</p>
+<input type="text" [(ngModel)]="usuario.nombre">
+<p>Clave</p>
+<input type="text" [(ngModel)]="usuario.clave">
+<button (click)="Ingresar()">Ingresar</button>
+<button (click)="Desingresar()">Desingresar</button>
+
+<div id="ngif" *ngIf="ingresado">
+    <p>{{usuario.nombre}}</p>
+    <p>{{usuario.clave}}</p>
+    <p>ngif</p>
+</div>
+
+<div id="hidden" [hidden]="!ingresado">
+    <p>{{usuario.nombre}}</p>
+    <p>{{usuario.clave}}</p>
+    <p>Hidden</p>
+</div>
+
+<!-- 
+<ng-template id="ngif" *ngIf="ingresado; else ahre">
+    <p>{{usuario.nombre}}</p>
+    <p>{{usuario.clave}}</p>
+</ng-template>
+
+<ng-template #ahre>
+    <div>
+        <h1>AHREGIL</h1>
+    </div>
+</ng-template> -->

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <label for="">Pais a buscar</label>
+        <input (keypress)="buscarPais(this.pais)" type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" [(ngModel)]="this.pais">
+        <label for="">Buscar por capital</label>
+        <input (keypress)="buscarPaisPorCapital(this.capital)" type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="" [(ngModel)]="this.capital">
+    </div>
+    <div class="card-columns">
+        <div class="card" *ngFor="let pais of paises; let i=index">
+            <div class="card-body">
+                <img class="card-img-top" src="{{pais.flag}}" alt="">
+                <h5 class="card-title">{{pais.name}}</h5>
+                <p class="card-text">Capital: {{pais.capital}}</p>
+                <p class="card-text">Poblacion: {{pais.population}}</p>
+            </div>
+        </div>
+    </div>
+</div>
