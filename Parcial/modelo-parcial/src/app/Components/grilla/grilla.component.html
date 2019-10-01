@@ -1,0 +1,12 @@
+<div class="card-columns">
+    <div class="card" *ngFor="let producto of this.productos">
+        <img src="{{producto.rutaDeFoto}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{producto.descripcion}}</h5>
+            <p class="card-text">Descripcion: {{producto.tipo}}</p>
+            <p class="card-text">Vencimiento: {{producto.fechaDeVencimiento.toString()}}</p>
+            <p class="card-text">Precio: {{producto.precio}}</p>
+            <app-button (productoEliminado)="getProductos()" [productoSeleccionado]="producto"></app-button>
+        </div>
+    </div>
+</div>

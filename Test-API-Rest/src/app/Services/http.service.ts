@@ -28,7 +28,7 @@ export class HttpService {
     this.headers.append('Access-Control-Allow-Origin', '*');
     this.headers.append('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization');
     this.headers.append('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    return this.http.post(url, JSON.stringify(body), {headers: this.headers, observe: 'body'}).pipe(
+    return this.http.post(url, JSON.stringify(body), {headers: this.headers}).pipe(
       retry(1),
       catchError(err =>  throwError(err))
     );

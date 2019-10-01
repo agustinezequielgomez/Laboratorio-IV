@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor(private apiTest: ApiTestService) {}
   
     ngOnInit(): void {
-      this.apiTest.login().subscribe((res) => {
+      this.apiTest.test().subscribe((res) => {
         console.log(res);
       })
     }
