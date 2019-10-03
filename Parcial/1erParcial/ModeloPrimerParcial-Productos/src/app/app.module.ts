@@ -18,7 +18,8 @@ import { FormAltaInheritComponent } from './Components/form-alta-inherit/form-al
 import { VentasService } from './Services/ventas.service';
 import { MainVentasComponent } from './Components/main-ventas/main-ventas.component';
 import { GrillaVentasComponent } from './Components/grilla-ventas/grilla-ventas.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
+import { FileUploaderComponent } from './Components/file-uploader/file-uploader.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +33,16 @@ import { GrillaVentasComponent } from './Components/grilla-ventas/grilla-ventas.
     FormAltaComponent,
     FormAltaInheritComponent,
     MainVentasComponent,
-    GrillaVentasComponent
+    GrillaVentasComponent,
+    FileUploaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule
   ],
   providers: [HttpService, ProductosService, VentasService],
   bootstrap: [AppComponent]
