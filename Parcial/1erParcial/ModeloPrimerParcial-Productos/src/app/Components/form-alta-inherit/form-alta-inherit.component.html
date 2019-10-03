@@ -1,0 +1,25 @@
+<form [formGroup]="this.form">
+    <div class="form-group">
+        <label for="tipo">Producto que desea vender</label>
+          <select class="form-control" name="tipo" id="" aria-describedby="helpId" placeholder="" formControlName="productoSeleccionado">
+              <option *ngFor="let producto of this.productos"  [ngValue]="producto">{{producto.descripcion}}</option>
+          </select>
+        <small *ngIf="productoSeleccionado.invalid" id="helpId" class="form-text text-danger">El producto a vender es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="fechaDeVenta">Fecha de venta</label>
+        <input type="datetime" class="form-control" name="fechaDeVenta" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeVenta">
+        <small *ngIf="this.form.controls['fechaDeVenta'].errors?.required" id="helpId" class="form-text text-danger">La fecha de venta es un campo requerido</small>
+        <small *ngIf="this.form.controls['fechaDeVenta'].errors?.fechaValida" id="helpId" class="form-text text-danger">La fecha de venta no cuenta con el formato apropiado</small>
+    </div>
+    <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" class="form-control" name="cantidad" id="" aria-describedby="helpId" placeholder="" formControlName="cantidad">
+        <small *ngIf="cantidad.invalid" id="helpId" class="form-text text-danger">La cantidad es un campo requerido</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid" (click)="alta()">
+        <span *ngIf="this.loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Alta
+    </button>
+    <p *ngIf="this.successMessage" class="text-center text-success">¡Venta realizada con exito!</p>
+</form>

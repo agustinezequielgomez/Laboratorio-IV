@@ -1,0 +1,11 @@
+<div class="card-deck">
+    <div class="card" *ngFor="let element of this.elements">
+        <img class="card-img-top" src="{{element.rutaDeFoto}}" alt="">
+        <div class="card-body">
+            <h4 class="card-title">Producto: {{element.descripcion}}</h4>
+            <p class="card-text">Tipo: {{element.tipo}}</p>
+            <p class="card-text">Precio: {{element.precio}}</p>
+            <p class="card-text">Vencimiento {{element.fechaDeVencimiento | date }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<form [formGroup]="this.form">
+    <div class="form-group">
+        <label for="descripcion">Descripcion</label>
+        <input type="text" class="form-control" name="descripcion" id="" aria-describedby="helpId" placeholder="" formControlName="descripcion">
+        <small *ngIf="descripcion.invalid" id="helpId" class="form-text text-danger">La descripcion es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+          <select class="form-control" name="tipo" id="" aria-describedby="helpId" placeholder="" formControlName="tipo">
+            <option>liquido</option>
+            <option>solido</option>
+          </select>
+        <small *ngIf="tipo.invalid" id="helpId" class="form-text text-danger">El tipo es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="fechaDeVencimiento">Fecha de vencimiento</label>
+        <input type="datetime" class="form-control" name="fechaDeVencimiento" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeVencimiento">
+        <small *ngIf="this.form.controls['fechaDeVencimiento'].errors?.required" id="helpId" class="form-text text-danger">La fecha de vencimiento es un campo requerido</small>
+        <small *ngIf="this.form.controls['fechaDeVencimiento'].errors?.fechaValida" id="helpId" class="form-text text-danger">La fecha de vencimiento no cuenta con el formato apropiado</small>
+    </div>
+    <div class="form-group">
+        <label for="precio">Precio</label>
+        <input type="number" class="form-control" name="precio" id="" aria-describedby="helpId" placeholder="" formControlName="precio">
+        <small *ngIf="this.form.controls['precio'].errors?.required" id="helpId" class="form-text text-danger">El precio es un campo requerido</small>
+        <small *ngIf="this.form.controls['precio'].errors?.precioValido" id="helpId" class="form-text text-danger">El precio debe estar entre 0 y 1000</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid" (click)="alta()">
+        <span *ngIf="this.loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Alta
+    </button>
+    <p *ngIf="this.successMessage" class="text-center text-success">¡Producto creado con exito!</p>
+</form>

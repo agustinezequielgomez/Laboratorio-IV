@@ -1,0 +1,18 @@
+<table class="table table table-responsive">
+    <thead>
+        <tr>
+            <th *ngFor="let atributo of this.attributes">{{atributo}}</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let elemento of this.elementos">
+                <td scope="row">{{elemento.id}}</td>
+                <td>{{elemento.descripcion}}</td>
+                <td>{{elemento.tipo}}</td>
+                <td>{{elemento.fechaDeVencimiento}}</td>
+                <td>{{elemento.precio}}</td>
+                <td><img src="{{elemento.rutaDeFoto}}" alt=""></td>
+                <td><app-delete-button [elementToDelete]="elemento" (delete)="this.reloadList()"></app-delete-button> </td>
+            </tr>
+        </tbody>
+</table>
