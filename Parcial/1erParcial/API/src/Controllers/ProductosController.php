@@ -94,4 +94,17 @@ class ProductosController
     $producto->delete();
     return $response->withJson("producto eliminado");
   }
+
+  public static function fileUpload(Request $request, Response $response, $args)
+  {
+    $path = './public/img';
+    $archivos = $request->getUploadedFiles();
+    $nombreFoto = ($archivos["foto"])->getClientFileName();
+    $extension = explode(".",$nombreFoto);
+    $extension = array_reverse($extension)[0];
+    $titulo = ("TEST".'.'.$extension);
+    $path .= $titulo;
+    $archivos["foto"]->moveTo($path);
+  }
+
 }

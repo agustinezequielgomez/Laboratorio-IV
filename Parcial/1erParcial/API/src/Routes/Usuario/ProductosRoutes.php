@@ -9,6 +9,7 @@ return function(App $app)
   {
     $this->get('/', ProductosController::class . ':traerTodos'); 
     $this->get('/{id}', ProductosController::class . ':traerPorId');
+    $this->post('/fileUpload', ProductosController::class.':fileUpload');
     $this->post('/', ProductosController::class . ':Create');
     $this->post('/{id}', ProductosController::class . ':Update');
     $this->delete('/{id}', ProductosController::class . ':Delete');
