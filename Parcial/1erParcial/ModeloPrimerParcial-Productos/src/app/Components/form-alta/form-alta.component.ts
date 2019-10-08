@@ -25,7 +25,7 @@ export class FormAltaComponent implements OnInit {
     this.form = new FormGroup({
       descripcion: new FormControl('', Validators.required),
       tipo: new FormControl('', Validators.required),
-      fechaDeVencimiento: new FormControl('', [Validators.required, this.fechaValida]),
+      fechaDeVencimiento: new FormControl('', [Validators.required]),
       precio: new FormControl('', [Validators.required, this.precioValido])
     });
   }

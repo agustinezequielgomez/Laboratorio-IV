@@ -6,7 +6,7 @@
     </div>
     <div class="form-group">
         <label for="tipo">Tipo</label>
-          <select class="form-control" name="tipo" id="" aria-describedby="helpId" placeholder="" formControlName="tipo">
+        <select class="form-control" name="tipo" id="" aria-describedby="helpId" placeholder="" formControlName="tipo">
             <option>liquido</option>
             <option>solido</option>
           </select>
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <label for="fechaDeVencimiento">Fecha de vencimiento</label>
-        <input type="datetime" class="form-control" name="fechaDeVencimiento" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeVencimiento">
+        <input type="date" class="form-control" name="fechaDeVencimiento" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeVencimiento">
         <small *ngIf="this.form.controls['fechaDeVencimiento'].errors?.required" id="helpId" class="form-text text-danger">La fecha de vencimiento es un campo requerido</small>
         <small *ngIf="this.form.controls['fechaDeVencimiento'].errors?.fechaValida" id="helpId" class="form-text text-danger">La fecha de vencimiento no cuenta con el formato apropiado</small>
     </div>

@@ -1,0 +1,40 @@
+<form [formGroup]="this.form">
+    <div class="form-group">
+        <label for="estrellaPrincipal">Estrella principal</label>
+        <select class="form-control" name="estrellaPrincipal" id="" aria-describedby="helpId" placeholder="Esetrella principal" formControlName="estrellaPrincipal">
+            <option *ngFor="let estrella of this.estrellasDeCine" [ngValue]="estrella">{{estrella.nombre}} - {{estrella.apellido}}</option>
+        </select>
+        <small *ngIf="estrellaPrincipal.invalid" id="helpId" class="form-text text-danger">La estrella principal es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="" aria-describedby="helpId" placeholder="" formControlName="nombre">
+        <small *ngIf="nombre.invalid" id="helpId" class="form-text text-danger">El nombre es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="tipo">Tipo</label>
+        <select class="form-control" name="tipo" id="" aria-describedby="helpId" placeholder="" formControlName="tipo">
+            <option>terror</option>
+            <option>comedia</option>
+            <option>amor</option>
+            <option>otros</option>
+          </select>
+        <small *ngIf="tipo.invalid" id="helpId" class="form-text text-danger">El tipo es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="fechaDeEstreno">Fecha de estreno</label>
+        <input type="date" class="form-control" name="fechaDeEstreno" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeEstreno">
+        <small *ngIf="this.form.controls['fechaDeEstreno'].errors?.required" id="helpId" class="form-text text-danger">La fecha de estreno es un campo requerido</small>
+        <small *ngIf="this.form.controls['fechaDeEstreno'].errors?.fechaValida" id="helpId" class="form-text text-danger">La fecha de estreno no cuenta con el formato apropiado</small>
+    </div>
+    <div class="form-group">
+        <label for="cantidadDePublico">cantidadDePublico</label>
+        <input type="number" class="form-control" name="cantidadDePublico" id="" aria-describedby="helpId" placeholder="" formControlName="cantidadDePublico">
+        <small *ngIf="this.form.controls['cantidadDePublico'].errors?.required" id="helpId" class="form-text text-danger">La cantidad de publico es un campo requerido</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid" (click)="alta()">
+        <span *ngIf="this.loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Alta
+    </button>
+    <p *ngIf="this.successMessage" class="text-center text-success">Pelicula creado con exito!</p>
+</form>

@@ -1,0 +1,28 @@
+<form [formGroup]="this.form">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" name="nombre" id="" aria-describedby="helpId" placeholder="" formControlName="nombre">
+        <small *ngIf="nombre.invalid" id="helpId" class="form-text text-danger">El nombre es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" class="form-control" name="apellido" id="" aria-describedby="helpId" placeholder="" formControlName="apellido">
+        <small *ngIf="apellido.invalid" id="helpId" class="form-text text-danger">El apellido es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="nacionalidad">Nacionalidad</label>
+        <input type="text" class="form-control" name="nacionalidad" id="" aria-describedby="helpId" placeholder="" formControlName="nacionalidad">
+        <small *ngIf="nacionalidad.invalid" id="helpId" class="form-text text-danger">La nacionalidad es un campo requerido</small>
+    </div>
+    <div class="form-group">
+        <label for="fechaDeNacimiento">Fecha de nacimiento</label>
+        <input type="datetime" class="form-control" name="fechaDeNacimiento" id="" aria-describedby="helpId" placeholder="" formControlName="fechaDeNacimiento">
+        <small *ngIf="this.form.controls['fechaDeNacimiento'].errors?.required" id="helpId" class="form-text text-danger">La fecha de nacimiento es un campo requerido</small>
+        <small *ngIf="this.form.controls['fechaDeNacimiento'].errors?.fechaValida" id="helpId" class="form-text text-danger">La fecha de nacimiento no cuenta con el formato apropiado</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="this.form.invalid" (click)="alta()">
+        <span *ngIf="this.loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Alta
+    </button>
+    <p *ngIf="this.successMessage" class="text-center text-success">¡Venta realizada con exito!</p>
+</form>
