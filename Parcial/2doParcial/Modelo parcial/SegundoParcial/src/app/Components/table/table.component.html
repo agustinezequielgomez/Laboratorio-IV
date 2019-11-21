@@ -1,0 +1,77 @@
+<div id="container" class="mat-elevation-z8">
+<ngx-skeleton-loader *ngIf="this.showSkeleton" [appearance]="'lines'" [count]="10" [theme]="{'height': '20vh'}">
+</ngx-skeleton-loader>
+<div>
+    <mat-form-field class="w-100" appearence="legacy">
+        <input matInput (keyup)="filterTable($event.target.value)" placeholder="Filtro">
+    </mat-form-field>
+    <table mat-table [dataSource]="this.dataSource" matSort>
+        <ng-container matColumnDef [matColumnDef]="column" *ngFor="let column of this.displayedColumns">
+            <div [ngSwitch]="column">
+                <div *ngSwitchCase="'path'">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Foto de perfil</th>
+                    <td mat-cell *matCellDef="let element"><img [src]="this.domSanitzaion.bypassSecurityTrustUrl(element.path)" class="profilePicture"></td>
+                </div>
+                <div *ngSwitchCase="'type'">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                    <td mat-cell *matCellDef="let element"> {{element.type | role}} </td>
+                </div>
+                <div *ngSwitchCase="'cupos'">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Cupos</th>
+                    <td mat-cell *matCellDef="let element" appCupos [cupos]="element.cupos"> {{element.cupos}} </td>
+                </div>
+                <div *ngSwitchDefault>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> {{column | titlecase}} </th>
+                    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+                </div>
+            </div>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="this.displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: this.displayedColumns;"></tr>
+    </table>
+</div>
+<mat-paginator *ngIf="this.adminTemplate === false; else adminPaginatorTemplate" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+<ng-template #adminPaginatorTemplate>
+    <mat-paginator appPaginator (clicked)="this.showAddSubjectForm = !this.showAddSubjectForm"
+        [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</ng-template>
+<div [@expandForm] *ngIf="this.adminTemplate === true && this.showAddSubjectForm === true" class="addMenuContainer">
+    <form [formGroup]="this.addSubjectForm">
+        <mat-form-field [color]="'accent'" class="formFieldAdd" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre">
+            <mat-error *ngIf="this.addSubjectForm.controls['nombre'].hasError('required')">Este campo es requerido
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field [color]="'accent'" class="formFieldAdd" appearance="outline">
+            <mat-label>Cuatrimestre</mat-label>
+            <input matInput formControlName="cuatrimestre">
+            <mat-error *ngIf="this.addSubjectForm.controls['cuatrimestre'].hasError('required')">Este campo es
+                requerido</mat-error>
+            <mat-error *ngIf="this.addSubjectForm.controls['cuatrimestre'].hasError('NumericValue')">El campo debe
+                ser numerico</mat-error>
+        </mat-form-field>
+        <mat-form-field [color]="'accent'" class="formFieldAdd" appearance="outline">
+            <mat-label>Cupos</mat-label>
+            <input matInput formControlName="cupos">
+            <mat-error *ngIf="this.addSubjectForm.controls['cupos'].hasError('required')">Este campo es requerido
+            </mat-error>
+            <mat-error *ngIf="this.addSubjectForm.controls['cupos'].hasError('NumericValue')">El campo debe ser
+                numerico</mat-error>
+        </mat-form-field>
+        <mat-form-field [color]="'accent'" class="formFieldAdd" appearance="outline">
+            <mat-label>Profesor a cargo</mat-label>
+            <mat-select [disableOptionCentering]="true" formControlName="profesor">
+                <mat-option *ngFor="let teacher of this.teachers" [value]="teacher.id">{{teacher.email}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="this.addSubjectForm.controls['profesor'].hasError('required')">Este campo es requerido
+            </mat-error>
+        </mat-form-field>
+        <button id="addButton" class="w-100" [disabled]="this.addSubjectForm.invalid" mat-raised-button color="accent"
+            (click)="this.insertSubject()">Agregar</button>
+    </form>
+</div>
+</div>

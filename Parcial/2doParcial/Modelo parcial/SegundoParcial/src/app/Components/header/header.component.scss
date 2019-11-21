@@ -1,0 +1,21 @@
+.blankSpace {
+    flex: 1 1 auto;
+}
+
+@mixin nameLogOut {
+    color: white;
+    margin: auto;
+}
+
+#userName,
+#icon {
+    @include nameLogOut();
+}
+
+#icon {
+    margin: 0 2% 0 .5%;
+}
+
+mat-toolbar {
+    margin-bottom: 2%;
+}

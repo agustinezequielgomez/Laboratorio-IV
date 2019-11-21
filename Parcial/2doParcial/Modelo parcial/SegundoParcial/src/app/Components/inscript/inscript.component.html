@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <p mat-dialog-title class="title">Inscribirse a una materia</p>
+            <span class="spacer"></span>
+            <button mat-icon-button color="accent" (click)="this.dialogRef.close()"><mat-icon>close</mat-icon></button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="containers" mat-dialog-content>
+        <mat-form-field class="formField" appearance="outline">
+                <mat-label>Materia</mat-label>
+                <mat-select placeholder="Materia" [(ngModel)]="this.selectedSubject">
+                    <mat-option *ngFor="let subject of this.subjects" [value]="subject">{{subject.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    </div>
+    <div class="containers" mat-dialog-actions>
+        <button mat-raised-button id="inscriptionButton" color="accent" [disabled]="this.disableButton()" (click)="this.inscript()">Inscribirse</button>
+    </div>

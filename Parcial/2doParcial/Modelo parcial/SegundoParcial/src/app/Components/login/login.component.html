@@ -1,0 +1,26 @@
+<form [formGroup]="this.form">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput placeholder="Email" name="userName" formControlName="email">
+            <mat-hint id="loginHint" *ngIf="this.form.controls['email'].invalid" class="text-danger">El email es un campo requerido</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input type="{{this.type}}" matInput placeholder="Contraseña" name="password" formControlName="password">
+            <mat-hint *ngIf="this.form.controls['password'].invalid" class="text-danger">La contraseña es un campo requerido</mat-hint>
+        </mat-form-field>
+        <mat-slide-toggle id="toggle" [color]="'accent'" (change)="this.showPassword()">Mostrar contraseña</mat-slide-toggle>
+        <mat-checkbox id="checkbox" [color]="'accent'" [checked]="'false'" [ngModelOptions]="{standalone: true}" [(ngModel)]="this.saveUser">Recordar usuario</mat-checkbox>
+    </p>
+    <mat-form-field appearance="legacy">
+        <mat-label>Quick Login!</mat-label>
+        <mat-select [disableOptionCentering]="true">
+                <mat-option (onSelectionChange)="this.quickLoginSelection(employee)" *ngFor="let employee of this.users" [value]="employee">{{employee.email}} / {{employee.type | role}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="this.form.invalid" class="w-100" id="loginButton" (click)="this.login()">Login</button>
+    <mat-progress-bar *ngIf="this.registering == true" color="primary" mode="query"></mat-progress-bar>
+</form>

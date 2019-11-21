@@ -1,0 +1,69 @@
+table {
+    width: 100%;
+}
+
+#container {
+    padding: 1% 2%;
+    margin-bottom: 1%;
+}
+
+.mat-table__wrapper .mat-table {
+    min-width: auto !important;
+    width: 100% !important;
+}
+
+.mat-header-row {
+    width: 100%;
+}
+
+.mat-row {
+    width: 100%;
+}
+
+@mixin formField {
+    margin-right: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.formField {
+    @include formField();
+    width: 25%;
+}
+
+@mixin formButton {
+    height: 46.0667px;
+    color: white;
+    margin-top: 1.5%;
+    margin-bottom: 1%;
+}
+#updateButton {
+    @include formButton();
+    width: 25%;
+}
+
+.pagButton {
+    left: 5%;
+    position: absolute;
+    float: left;
+    display: flex;
+    color: white;
+    margin-top: 1%;
+}
+
+.formFieldAdd {
+    @include formField();
+    width: 23%;
+}
+
+#addButton {
+    @include formButton();
+    width: 20%;
+}
+
+.profilePicture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: 2% 0;
+}

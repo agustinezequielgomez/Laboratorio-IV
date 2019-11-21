@@ -1,0 +1,33 @@
+<app-file-upload [displayUploadedFoto]="'true'" [message]="'Subir foto de perfil'" (fileSelected)="this.getProfilePic($event)"></app-file-upload>
+<form [formGroup]="this.form">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="text" matInput placeholder="Email" formControlName="email">
+            <mat-hint *ngIf="this.form.controls['email'].invalid" class="text-danger">El email es un campo requerido</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput placeholder="Contraseña" formControlName="password">
+            <mat-hint *ngIf="this.form.controls['password'].invalid" class="text-danger">La contraseña es un campo requerido</mat-hint>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de usuario</mat-label>
+            <mat-select placeholder="Tipo de usuario" formControlName="role">
+                <mat-option value="1">Alumno</mat-option>
+                <mat-option value="2">Profesor</mat-option>
+                <mat-option value="3">Administrador</mat-option>
+              </mat-select>
+            <mat-hint *ngIf="this.form.controls['role'].invalid" class="text-danger">El tipo de usuario es un campo requerido</mat-hint>
+        </mat-form-field>
+    </p>
+    <!-- <p>
+        <re-captcha (resolved)="resolvedCaptcha($event)"></re-captcha>
+    </p> -->
+    <button mat-raised-button color="accent" [disabled]="this.form.invalid || this.profilePic === null" class="w-100" id="registerButton" (click)="this.register()">Registrarse</button>
+    <mat-progress-bar *ngIf="this.registering == true" color="primary" mode="query"></mat-progress-bar>
+</form>

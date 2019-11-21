@@ -1,0 +1,5 @@
+- Helpers/AppConfig -> info para la bd 
+- Models: declarar el modelo con el nombre de la tabla a usar y algun que otro metodo
+- Routes: Rutas para pegarle a la API.
+- Controladores: Metodos llamados porl las rutas.
+- 

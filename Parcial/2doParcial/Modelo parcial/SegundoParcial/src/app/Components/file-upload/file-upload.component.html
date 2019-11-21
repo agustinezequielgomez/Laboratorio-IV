@@ -1,0 +1,7 @@
+<img *ngIf="this.displayUploadedFoto" [src]="this.url" class="rounded-circle" alt="">
+<br>
+<p  class="vivify fadeIn" *ngIf="this.url !== '../../assets/blankPick.png' && this.displayUploadedFoto">¡Te ves genial!</p>
+<div class="upload-btn-wrapper">
+    <button mat-raised-button color="accent">{{this.message}}</button>
+    <input type="file" ng2FileSelect (change)="this.getRendererImage($event)" [uploader]="this.uploader"/>
+</div>

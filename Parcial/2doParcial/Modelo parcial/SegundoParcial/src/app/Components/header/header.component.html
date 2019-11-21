@@ -1,0 +1,7 @@
+<mat-toolbar class="toolbar" [color]="'primary'">
+    <mat-toolbar-row>
+        <span class="spacer"></span>
+        <span [ngStyle]="{'color': 'white'}">{{this.email}}</span>
+        <button mat-icon-button color="accent" (click)="logOut()"><mat-icon>exit_to_app</mat-icon></button>
+    </mat-toolbar-row>
+</mat-toolbar>
